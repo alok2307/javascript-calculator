@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .formstyle{
+            width: 300px;
+            height: 330px;
+            margin: auto;
+            margin-top: 100px;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 10px;
+        }
+        #ansbox{
+            width: 90%;
+            height: 40px;
+            text-align: right;
+            margin-left: 10px;
+            /* padding-left: 10px; */
+            border-radius: 10px;
+            padding-right: 10px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .key input{
+            width: 20%;
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            
+        }
+        .key input:hover{
+            background-color: rgb(170, 169, 169) ;
+            color: white;
+        }
+        #clear{
+            width: 46%;
+        }
+        #clear:hover{
+            background-color:  rgb(235, 80, 93);
+        }
+
+    </style>
+    <script>
+        function back(){
+            var prevalue = forms.ans.value;
+            forms.ans.value = prevalue.substr(0, prevalue.length-1);
+        }
+        function fsin(){
+            forms.ans.value = Math.sin(forms.ans.value);
+        }
+        function fcos(){
+            forms.ans.value = Math.cos(forms.ans.value);
+        }
+        function ftan(){
+            forms.ans.value = Math.tan(forms.ans.value);
+        }
+        function fsqr(){
+            forms.ans.value = Math.pow(forms.ans.value,2);
+        }
+        function froot(){
+            forms.ans.value = Math.pow(forms.ans.value,1/2);
+        }
+        function flog(){
+            forms.ans.value = Math.log(forms.ans.value,1/2);
+        }
+    </script>
+</head>
+<body>
+    <div class="formstyle">
+        <form name="forms" >
+            <input type="text" name="ans" id="ansbox" placeholder="0 0"><br>
+            <div class="key">
+                <input type="button" value=" sin " name=" btnsin " onclick="fsin()">
+                <input type="button" value=" cos " name=" btncos " onclick="fcos()">
+                <input type="button" value=" tan " name=" btntan " onclick="ftan()">
+                <input type="button" value="  x² " name=" btnsqr " onclick="fsqr()"><br>  
+
+                <input type="button" value=" √ " name=" btnroot " onclick="froot()">
+                <input type="button" value=" ( " name=" btncos " onclick="forms.ans.value += '('">
+                <input type="button" value=" ) " name=" btntan " onclick="forms.ans.value += ')'">
+                <input type="button" value="  log " name=" btnsqr " onclick="flog()"><br>  
+
+                <input type="button" value=" 7 " onclick="forms.ans.value += '7'">
+                <input type="button" value=" 8 " onclick="forms.ans.value += '8'">
+                <input type="button" value=" 9 " onclick="forms.ans.value += '9'">
+                <input type="button" value=" - " onclick="forms.ans.value += '-'"><br>                
+
+                <input type="button" value=" 4 " onclick="forms.ans.value += '4'">
+                <input type="button" value=" 5 " onclick="forms.ans.value += '5'">
+                <input type="button" value=" 6 " onclick="forms.ans.value += '6'">
+                <input type="button" value=" * " onclick="forms.ans.value += '*'"><br>
+                
+                <input type="button" value=" 1 " onclick="forms.ans.value += '1'">
+                <input type="button" value=" 2 " onclick="forms.ans.value += '2'">
+                <input type="button" value=" 3 " onclick="forms.ans.value += '3'">
+                <input type="button" value=" / " onclick="forms.ans.value += '/'"><br>
+
+                <input type="button" value=" 0 " onclick="forms.ans.value += '0'">
+                <input type="button" value=" . " onclick="forms.ans.value += '.'">
+                <input type="button" value=" = " onclick="forms.ans.value = eval(forms.ans.value) ">
+                <input type="button" value=" + " onclick="forms.ans.value += '+'"><br>
+
+                <input type="button" value="Del" onclick="back()" id="clear">
+                <input type="button" value="AC" onclick="forms.ans.value = ''" id="clear">
+
+            </div>
+
+        </form>
+    </div>
+    
+</body>
+</html>
