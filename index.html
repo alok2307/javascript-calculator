@@ -11,15 +11,19 @@
         }
         body{
             background-color: #333;
+            
         }
         .formstyle{
             width: 330px;
-            height: 380px;
+            height: 530px;
             margin: auto;
-            margin-top: 100px;
+            margin-top: 50px;
+            font-size: 22px;
             padding: 10px;
+            /* background-color: #333; */
             border: 1px solid gray;
             border-radius: 10px;
+            
         }
         #ansbox{
             width: 90%;
@@ -29,101 +33,133 @@
             margin-top: 10px;
             border-radius: 10px;
             padding-right: 10px;
+            padding: 5px;
+            outline:none; 
             font-size: 20px;
             font-weight: bold;
         }
-        .key input{
+        .calc input{
             width: 20%;
             height: 35px;
-            margin-top: 10px;
+            margin-top: 15px;
             margin-left: 10px;
-            font-size: 18px;
+            padding:1px;
+            font-size: 20px;
             font-weight: bold;
             background-color: #333;
+            border-radius: 30px;
+            outline:none;
             color: #fff;
             box-shadow: inset -6px -6px 16px #444444,
                     inset 6px 6px 16px #5555;
             
         }
-        .key input:hover{
+        .calc input:hover{
             background-color: #444444 ;
             color: white;
         }
         #clear{
             width: 45%;
         }
-        #clear:hover{
-            background-color:  rgb(235, 80, 93);
-        }
+        
 
     </style>
-    <script>
-        function back(){
-            var prevalue = forms.ans.value;
-            forms.ans.value = prevalue.substr(0, prevalue.length-1);
-        }
-        function fsin(){
-            forms.ans.value = Math.sin(forms.ans.value);
-        }
-        function fcos(){
-            forms.ans.value = Math.cos(forms.ans.value);
-        }
-        function ftan(){
-            forms.ans.value = Math.tan(forms.ans.value);
-        }
-        function fsqr(){
-            forms.ans.value = Math.pow(forms.ans.value,2);
-        }
-        function froot(){
-            forms.ans.value = Math.pow(forms.ans.value,1/2);
-        }
-        function flog(){
-            forms.ans.value = Math.log(forms.ans.value,1/2);
-        }
-    </script>
+    
 </head>
 <body>
     <div class="formstyle">
-        <form name="forms" >
-            <input type="text" name="ans" id="ansbox" placeholder="0 0"><br>
-            <div class="key">
-                <input type="button" value=" sin " name=" btnsin " onclick="fsin()">
-                <input type="button" value=" cos " name=" btncos " onclick="fcos()">
-                <input type="button" value=" tan " name=" btntan " onclick="ftan()">
-                <input type="button" value="  x² " name=" btnsqr " onclick="fsqr()"><br>  
-
-                <input type="button" value=" √ " name=" btnroot " onclick="froot()">
-                <input type="button" value=" ( " name=" btncos " onclick="forms.ans.value += '('">
-                <input type="button" value=" ) " name=" btntan " onclick="forms.ans.value += ')'">
-                <input type="button" value="  log " name=" btnsqr " onclick="flog()"><br>  
-
-                <input type="button" value=" 7 " onclick="forms.ans.value += '7'">
-                <input type="button" value=" 8 " onclick="forms.ans.value += '8'">
-                <input type="button" value=" 9 " onclick="forms.ans.value += '9'">
-                <input type="button" value=" - " onclick="forms.ans.value += '-'"><br>                
-
-                <input type="button" value=" 4 " onclick="forms.ans.value += '4'">
-                <input type="button" value=" 5 " onclick="forms.ans.value += '5'">
-                <input type="button" value=" 6 " onclick="forms.ans.value += '6'">
-                <input type="button" value=" * " onclick="forms.ans.value += '*'"><br>
+        <form name="calc" >
+            <input name="display" id="ansbox" placeholder="0 0 0 0 0" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"> 
+            <br>
+            <div class="calc">
+                <input id="btn" type="button" value="sin" OnClick="calc.display.value='Math.sin('">
+                <input id="btn" type="button" value="cos" OnClick="calc.display.value='Math.cos('"> 
+                <input id="btn" type="button" value="tan" OnClick="calc.display.value='Math.tan('"> 
+                <input id="btn" type="button" value="sqrt" OnClick="calc.display.value+='Math.sqrt('"> <br> 
                 
-                <input type="button" value=" 1 " onclick="forms.ans.value += '1'">
-                <input type="button" value=" 2 " onclick="forms.ans.value += '2'">
-                <input type="button" value=" 3 " onclick="forms.ans.value += '3'">
-                <input type="button" value=" / " onclick="forms.ans.value += '/'"><br>
+                <input id="btn" type="button" value="ln10" OnClick="calc.display.value+='Math.Log10('">
+                <input id="btn" type="button" value="ln10" OnClick="calc.display.value+='Math.Log10('"> 
+                <input id="btn" type="button" value="l10e" OnClick="calc.display.value+='Math.log10('">
+                <input id="btn" type="button" value="exp"  OnClick="calc.display.value='Math.exp('"> <br>
 
-                <input type="button" value=" 0 " onclick="forms.ans.value += '0'">
-                <input type="button" value=" . " onclick="forms.ans.value += '.'">
-                <input type="button" value=" = " onclick="forms.ans.value = eval(forms.ans.value) ">
-                <input type="button" value=" + " onclick="forms.ans.value += '+'"><br>
+                <input id="btn" type="button" value="log"  OnClick="calc.display.value='Math.log('">
+                <input id="btn" type="button" value="^" OnClick="calc.display.value+='Math.pow('">
+                <input id="btn" type="button" value="pi" OnClick="calc.display.value+='Math.PI'">
+                <input id="btn" type="button" value="E" OnClick="calc.display.value+='Math.E'"><br>
 
-                <input type="button" value="Del" onclick="back()" id="clear">
-                <input type="button" value="AC" onclick="forms.ans.value = ''" id="clear">
+                <input id="btn" type="button" value="n!" OnClick="calc.display.value+='!'">
+                <input id="btn" type="button" value="(" OnClick="calc.display.value+='('">               
+                <input id="btn" type="button" value=")" OnClick="calc.display.value+=')'"> 
+                <input id="btn" type="button" value="+" OnClick="calc.display.value+='+'"> <br>  
+
+                <input id="btn" type="button" value="7" OnClick="calc.display.value+='7'">
+                <input id="btn" type="button" value="8" OnClick="calc.display.value+='8'">
+                <input id="btn" type="button" value="9" OnClick="calc.display.value+='9'">
+                <input id="btn" type="button" value="-" OnClick="calc.display.value='-'"> <br>                
+
+                <input id="btn" type="button" value="4" OnClick="calc.display.value+='4'">
+                <input id="btn" type="button" value="5" OnClick="calc.display.value+='5'">
+                <input id="btn" type="button" value="6" OnClick="calc.display.value+='6'">
+                <input id="btn" type="button" value="*" OnClick="calc.display.value+='*'"> <br>
+                
+                <input id="btn" type="button" value="1" OnClick="calc.display.value+='1'">
+                <input id="btn" type="button" value="2" OnClick="calc.display.value+='2'">
+                <input id="btn" type="button" value="3" OnClick="calc.display.value+='3'">
+                <input id="btn" type="button" value="/" OnClick="calc.display.value+='/'"><br>
+
+                <input id="btn" type="button" value="0" OnClick="calc.display.value+='0'">
+                <input id="btn" type="button" value="." OnClick="calc.display.value+='.'"> 
+                <input id="clear" type="button" value="=" OnClick="calculate(this.form)"> <br>
+
+                <!-- <input type="button" value=" DEL " onclick="back()" id="clear"> -->
+                <input id="clear" type="button" value="DEL" OnClick="backspace(this.form)"> 
+                <input id="clear" type="button" value="AC"  OnClick="calc.display.value=''"> 
+                <!-- <input type="button" value=" AC " onclick="forms.ans.value = ''" id="clear"> -->
 
             </div>
 
         </form>
     </div>
+
+        
+    <script> 
+          
+        /* Creating function in HTML for backspace operation */ 
+        function backspace(calc) {                                              
+            size = calc.display.value.length; 
+            calc.display.value = calc.display.value.substring(0, size-1); 
+        } 
+          
+        /* Creating function to calculate factorial of element */ 
+        function calculate(calc) { 
+              
+            /* Check if function include ! character then 
+            calculate factorial of number */ 
+            if(calc.display.value.includes("!")) { 
+                  
+                size = calc.display.value.length; 
+                n = Number(calc.display.value.substring(0, size-1)); 
+                f = 1; 
+                  
+                for(i = 2; i <= n; i++) 
+                    f = f*i; 
+                calc.display.value = f; 
+            } 
+              
+            /* If function include % character then calculate 
+            the % of number */ 
+            else if(calc.display.value.includes("%")) { 
+                  
+                size = calc.display.value.length; 
+                n = Number(calc.display.value.substring(0, size-1)); 
+                calc.display.value = n/100; 
+            } 
+  
+            else     
+                /* Otherwise evalute and execute output */ 
+                calc.display.value = eval(calc.display.value); 
+        } 
+    </script>
     
 </body>
 </html>
